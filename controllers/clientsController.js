@@ -28,13 +28,13 @@ exports.findAll = (req, res) => {
       });
   };
   
-  // Find a single Client with a ClientId
+  // Find a single Client with a clientId
   exports.findOne = (req, res) => {
-    Client.findById(req.params.ClientId)
+    Client.findById(req.params.clientId)
       .then((Client) => {
         if (!Client) {
           return res.status(404).send({
-            message: 'Client not found with id ' + req.params.ClientId,
+            message: 'Client not found with id ' + req.params.clientId,
           });
         }
         res.send(Client);
@@ -42,22 +42,22 @@ exports.findAll = (req, res) => {
       .catch((err) => {
         if (err.kind === 'ObjectId') {
           return res.status(404).send({
-            message: 'Client not found with id ' + req.params.ClientId,
+            message: 'Client not found with id ' + req.params.clientId,
           });
         }
         return res.status(500).send({
-          message: 'Error retrieving Client with id ' + req.params.ClientId,
+          message: 'Error retrieving Client with id ' + req.params.clientId,
         });
       });
   };
   
-  // Update a Client identified by the ClientId in the request
+  // Update a Client identified by the clientId in the request
   exports.update = (req, res) => {
-    Client.findByIdAndUpdate(req.params.ClientId, req.body, { new: true })
+    Client.findByIdAndUpdate(req.params.clientId, req.body, { new: true })
       .then((Client) => {
         if (!Client) {
           return res.status(404).send({
-            message: 'Client not found with id ' + req.params.ClientId,
+            message: 'Client not found with id ' + req.params.clientId,
           });
         }
         res.send(Client);
@@ -65,22 +65,22 @@ exports.findAll = (req, res) => {
       .catch((err) => {
         if (err.kind === 'ObjectId') {
           return res.status(404).send({
-            message: 'Client not found with id ' + req.params.ClientId,
+            message: 'Client not found with id ' + req.params.clientId,
           });
         }
         return res.status(500).send({
-          message: 'Error updating Client with id ' + req.params.ClientId,
+          message: 'Error updating Client with id ' + req.params.clientId,
         });
       });
   };
   
-  // Delete a Client with the specified ClientId in the request
+  // Delete a Client with the specified clientId in the request
   exports.delete = (req, res) => {
-    Client.findByIdAndRemove(req.params.ClientId)
+    Client.findByIdAndRemove(req.params.clientId)
       .then((Client) => {
         if (!Client) {
           return res.status(404).send({
-            message: 'Client not found with id ' + req.params.ClientId,
+            message: 'Client not found with id ' + req.params.clientId,
           });
         }
         res.send({ message:        'Client deleted successfully!',
@@ -89,11 +89,11 @@ exports.findAll = (req, res) => {
     .catch((err) => {
       if (err.kind === 'ObjectId' || err.name === 'NotFound') {
         return res.status(404).send({
-          message: 'Client not found with id ' + req.params.ClientId,
+          message: 'Client not found with id ' + req.params.clientId,
         });
       }
       return res.status(500).send({
-        message: 'Could not delete Client with id ' + req.params.ClientId,
+        message: 'Could not delete Client with id ' + req.params.clientId,
       });
     });
   };

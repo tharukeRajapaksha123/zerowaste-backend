@@ -30,7 +30,7 @@ exports.findAll = (req, res) => {
   
   // Find a single WorkAssignment with a WorkAssignmentId
   exports.findOne = (req, res) => {
-    WorkAssignment.findById(req.params.WorkAssignmentId)
+    WorkAssignment.findById(req.params.workAssignmentId)
       .then((WorkAssignment) => {
         if (!WorkAssignment) {
           return res.status(404).send({
@@ -53,7 +53,7 @@ exports.findAll = (req, res) => {
   
   // Update a WorkAssignment identified by the WorkAssignmentId in the request
   exports.update = (req, res) => {
-    WorkAssignment.findByIdAndUpdate(req.params.WorkAssignmentId, req.body, { new: true })
+    WorkAssignment.findByIdAndUpdate(req.params.workAssignmentId, req.body, { new: true })
       .then((WorkAssignment) => {
         if (!WorkAssignment) {
           return res.status(404).send({
@@ -76,7 +76,7 @@ exports.findAll = (req, res) => {
   
   // Delete a WorkAssignment with the specified WorkAssignmentId in the request
   exports.delete = (req, res) => {
-    WorkAssignment.findByIdAndRemove(req.params.WorkAssignmentId)
+    WorkAssignment.findByIdAndRemove(req.params.workAssignmentId)
       .then((WorkAssignment) => {
         if (!WorkAssignment) {
           return res.status(404).send({
